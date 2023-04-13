@@ -1,4 +1,5 @@
 import 'package:english_mbti_test_app/constants.dart';
+import 'package:english_mbti_test_app/routes/app_pages.dart';
 import 'package:english_mbti_test_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -42,9 +43,15 @@ class QuestionScreen extends StatelessWidget {
                     ),
                   ),
                   Spacer(),
-                  SvgPicture.asset(
-                    Assets.NEXT_ICON,
-                    height: 20,
+                  InkWell(
+                    onTap: (){
+                      // tood: fix it later (it is just implemented for test)
+                      Get.toNamed(Routes.RESULT);
+                    },
+                    child: SvgPicture.asset(
+                      Assets.NEXT_ICON,
+                      height: 20,
+                    ),
                   ),
                 ],
               ),
