@@ -1,4 +1,5 @@
 import 'package:english_mbti_test_app/constants.dart';
+import 'package:english_mbti_test_app/routes/app_pages.dart';
 import 'package:english_mbti_test_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,7 +19,7 @@ class WelcomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SvgPicture.asset(
-                'assets/images/temp_logo.svg',
+                Assets.LOGO,
                 width: 48,
               ),
               SizedBox(
@@ -51,19 +52,25 @@ class WelcomeScreen extends StatelessWidget {
                     fontFamily: Fonts.Medium),
               ),
               Spacer(),
-              SvgPicture.asset('assets/images/welcome_img.svg'),
+              SvgPicture.asset(Assets.WELCOME_IMG),
               Spacer(),
-              Container(
-                width: Get.width / 2,
-                padding: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: primaryColor),
-                child: Center(
-                  child: Text(
-                    'Get Started',
-                    style: TextStyle(
-                        color: Colors.white, fontFamily: Fonts.SemiBold),
+              InkWell(
+                onTap: () {
+                  Get.toNamed(Routes.START);
+                },
+                borderRadius: BorderRadius.circular(15),
+                child: Container(
+                  width: Get.width / 2,
+                  padding: EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: primaryColor),
+                  child: Center(
+                    child: Text(
+                      'Get Started',
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: Fonts.SemiBold),
+                    ),
                   ),
                 ),
               ),

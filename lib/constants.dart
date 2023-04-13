@@ -11,3 +11,9 @@ abstract class Fonts {
   static const Bold = 'Bold';
   static const ExtraBold = 'ExtraBold';
 }
+
+abstract class Assets {
+  static const LOGO = 'assets/images/temp_logo.svg';
+  static const WELCOME_IMG = 'assets/images/welcome_img.svg';
+  static const START_IMG = 'assets/images/start_img.svg';
+}
