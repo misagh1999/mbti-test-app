@@ -1,4 +1,5 @@
 import 'package:english_mbti_test_app/constants.dart';
+import 'package:english_mbti_test_app/routes/app_pages.dart';
 import 'package:english_mbti_test_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,12 +15,12 @@ class StartScreen extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-            HexColor.fromHex('527BE2'),
-            HexColor.fromHex('1E4BBE')
-          ])),
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                HexColor.fromHex('527BE2'),
+                HexColor.fromHex('1E4BBE')
+              ])),
           child: Column(
             children: [
               Container(
@@ -75,16 +76,22 @@ class StartScreen extends StatelessWidget {
                 ),
               ),
               Spacer(),
-              Container(
-                padding: EdgeInsets.all(12),
-                width: Get.width / 1.5,
-                decoration: BoxDecoration(
-                    color: HexColor.fromHex('F0E823'),
-                    borderRadius: BorderRadius.circular(20)),
-                child: Center(
-                  child: Text(
-                    'Start Test',
-                    style: TextStyle(fontFamily: Fonts.SemiBold, fontSize: 18),
+              InkWell(
+                onTap: () {
+                  Get.toNamed(Routes.QUESTION);
+                },
+                child: Container(
+                  padding: EdgeInsets.all(12),
+                  width: Get.width / 1.5,
+                  decoration: BoxDecoration(
+                      color: HexColor.fromHex('F0E823'),
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Center(
+                    child: Text(
+                      'Start Test',
+                      style:
+                          TextStyle(fontFamily: Fonts.SemiBold, fontSize: 18),
+                    ),
                   ),
                 ),
               ),
