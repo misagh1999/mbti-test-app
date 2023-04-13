@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
-
 import 'utils/utils.dart';
 
-var primaryColor = HexColor.fromHex('090E70');
-var secondayColor = Colors.amber[900];
+var primaryColor = HexColor.fromHex('527BE2');
+var secondayColor = HexColor.fromHex('F0E823');
 
 abstract class Fonts {
   static const Light = 'Light';
