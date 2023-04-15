@@ -7,6 +7,7 @@ import 'components/result_bottom_widget.dart';
 import 'components/result_main_widget.dart';
 import 'components/result_top_widget.dart';
 import 'sub_screens/description_sub_screen.dart';
+import 'sub_screens/relationship_sub_screen.dart';
 import 'sub_screens/work_sub_screen.dart';
 
 class ResultScreen extends StatelessWidget {
@@ -25,7 +26,9 @@ class ResultScreen extends StatelessWidget {
                   child:
                       // ResultMainWidget()
                       // DescriptionSubScreen()
-                      WorkSubScreen()),
+                      // WorkSubScreen()
+                      RelationshipSubScreen()
+                      ),
               ResultBottomWidget()
             ],
           ),
@@ -34,5 +37,7 @@ class ResultScreen extends StatelessWidget {
     );
   }
 }
+
+
 
 
