@@ -46,4 +46,6 @@ abstract class Assets {
 abstract class MyString {
   static const DESCRIPTION_DEMO =
       'The ENFJ type is a person who is interested and kind, and notices the admirable qualities of others. He can relate to a variety of people. The ENFJ type is an excellent communicator, a natural leader, and very skilled at motivating and persuading others. At work, he is likely to be very success-oriented and likes to get what he wants. This type is knowledgeable, disciplined, goal-oriented, and decisive, and expects the same from others.';
+  static const SUGGESTION_DEMO =
+      'Dont ask to do everything. Some things can be done later and some things cant be done at all.';
 }
