@@ -7,6 +7,7 @@ import 'components/result_bottom_widget.dart';
 import 'components/result_main_widget.dart';
 import 'components/result_top_widget.dart';
 import 'sub_screens/description_sub_screen.dart';
+import 'sub_screens/work_sub_screen.dart';
 
 class ResultScreen extends StatelessWidget {
   const ResultScreen({super.key});
@@ -23,7 +24,8 @@ class ResultScreen extends StatelessWidget {
               Expanded(
                   child:
                       // ResultMainWidget()
-                      DescriptionSubScreen()),
+                      // DescriptionSubScreen()
+                      WorkSubScreen()),
               ResultBottomWidget()
             ],
           ),
@@ -32,3 +34,5 @@ class ResultScreen extends StatelessWidget {
     );
   }
 }
+
+
