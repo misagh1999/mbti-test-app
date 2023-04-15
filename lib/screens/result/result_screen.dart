@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'components/result_bottom_widget.dart';
 import 'components/result_main_widget.dart';
 import 'components/result_top_widget.dart';
+import 'sub_screens/description_sub_screen.dart';
 
 class ResultScreen extends StatelessWidget {
   const ResultScreen({super.key});
@@ -19,7 +20,10 @@ class ResultScreen extends StatelessWidget {
           child: Column(
             children: [
               ResultTopWidget(),
-              Expanded(child: ResultMainWidget()),
+              Expanded(
+                  child:
+                      // ResultMainWidget()
+                      DescriptionSubScreen()),
               ResultBottomWidget()
             ],
           ),
@@ -28,6 +32,3 @@ class ResultScreen extends StatelessWidget {
     );
   }
 }
-
-
-

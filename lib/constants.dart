@@ -16,6 +16,9 @@ abstract class Assets {
   static const LOGO = 'assets/images/temp_logo.svg';
   static const WELCOME_IMG = 'assets/images/welcome_img.svg';
   static const START_IMG = 'assets/images/start_img.svg';
+  static const WORK_IMG = 'assets/images/work_img.svg';
+  static const RELATIONSHIP_IMG = 'assets/images/relationship_img.svg';
+  static const HOBBY_IMG = 'assets/images/hobby_img.svg';
 
   static const PREVIOUS_ICON = 'assets/icons/previous_icon.svg';
   static const NEXT_ICON = 'assets/icons/next_icon.svg';
@@ -38,4 +41,9 @@ abstract class Assets {
   static const IC_ISFP = 'assets/icons/mbti/ISFP.svg';
   static const IC_ISTJ = 'assets/icons/mbti/ISTJ.svg';
   static const IC_ISTP = 'assets/icons/mbti/ISTP.svg';
+}
+
+abstract class MyString {
+  static const DESCRIPTION_DEMO =
+      'The ENFJ type is a person who is interested and kind, and notices the admirable qualities of others. He can relate to a variety of people. The ENFJ type is an excellent communicator, a natural leader, and very skilled at motivating and persuading others. At work, he is likely to be very success-oriented and likes to get what he wants. This type is knowledgeable, disciplined, goal-oriented, and decisive, and expects the same from others.';
 }
