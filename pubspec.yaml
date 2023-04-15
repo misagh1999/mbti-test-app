@@ -51,6 +51,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/icons/mbti/
+    - assets/test_result/
 
   fonts:
     - family: Light
