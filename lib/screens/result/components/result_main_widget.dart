@@ -1,13 +1,16 @@
 import 'package:english_mbti_test_app/constants.dart';
+import 'package:english_mbti_test_app/controllers/exam_controller.dart';
 import 'package:english_mbti_test_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class ResultMainWidget extends StatelessWidget {
-  const ResultMainWidget({
+  ResultMainWidget({
     super.key,
   });
+
+  final ExamController _ = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +33,14 @@ class ResultMainWidget extends StatelessWidget {
                       color: HexColor.fromHex('A4A4A4'), fontSize: 16),
                 ),
                 Text(
-                  'ISTP',
+                  _.result.type,
                   style: TextStyle(fontFamily: Fonts.Bold, fontSize: 32),
                 ),
                 SizedBox(
                   height: 12,
                 ),
                 Text(
-                  'Extroverted\nintuitive\nemotional\njudgmental',
+                  _.result.title,
                   style: TextStyle(
                       color: HexColor.fromHex('9D9D9D'), fontSize: 16),
                 )
@@ -59,7 +62,7 @@ class ResultMainWidget extends StatelessWidget {
         ),
         SizedBox(height: 8,),
         Text(
-          'I am deeply affected by the joys and sorrows that the human soul can experience.',
+          _.result.favoriteSentence,
           style: TextStyle(
               color: HexColor.fromHex('A4A4A4'),
               fontSize: 20,

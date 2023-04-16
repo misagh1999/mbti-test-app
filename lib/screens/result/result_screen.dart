@@ -26,12 +26,12 @@ class ResultScreen extends StatelessWidget {
               ResultTopWidget(),
               Expanded(
                   child:
-                      // ResultMainWidget()
+                      ResultMainWidget()
                       // DescriptionSubScreen()
                       // WorkSubScreen()
                       // RelationshipSubScreen()
                       // HobbySubScreen()
-                      SuggestionSubScreen()
+                      // SuggestionSubScreen()
                       ),
               ResultBottomWidget()
             ],

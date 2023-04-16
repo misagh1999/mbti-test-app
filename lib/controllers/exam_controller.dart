@@ -28,6 +28,8 @@ class ExamController extends GetxController
   RxInt _questionIndex = 0.obs;
   RxInt get questionIndex => this._questionIndex;
 
+  late PResultModel result;
+
   @override
   void onInit() {
     _pageController = PageController();
@@ -45,9 +47,10 @@ class ExamController extends GetxController
 
     _questions[_questionIndex.value].selectedOption.value = optionIndex;
 
-    Future.delayed(Duration(milliseconds: 350), () {
+    // todo: removed delayed for test, put it later
+    // Future.delayed(Duration(milliseconds: 350), () {
       nextQuestion();
-    });
+    // });
   }
 
   void previousQuestion() {
@@ -70,7 +73,7 @@ class ExamController extends GetxController
     }
   }
 
-  void _calculateAndGoToResultScreen() {
+  void _calculateAndGoToResultScreen() async{
     String resultTypeStr = "";
 
     for (int i = 0; i < _questions.length; i++) {
@@ -87,6 +90,10 @@ class ExamController extends GetxController
 
     final model = PersonalityModel.createFromCode(resultTypeStr);
 
-    Get.toNamed(Routes.RESULT, arguments: {"model": model});
+    result = PResultModel(type: model.type);    
+
+    await result.loadResult();
+
+    Get.toNamed(Routes.RESULT);
   }
 }
