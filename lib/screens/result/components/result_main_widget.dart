@@ -48,8 +48,8 @@ class ResultMainWidget extends StatelessWidget {
             ),
             Spacer(),
             SvgPicture.asset(
-              Assets.IC_ESFP,
-              height: Get.width / 2,
+              _.result.imgPath,
+              height: Get.width / 2.5,
             )
           ],
         ),

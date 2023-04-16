@@ -89,6 +89,18 @@ class QuestionScreen extends StatelessWidget {
                   style:
                       TextStyle(color: primaryColor, fontFamily: Fonts.Medium),
                 ),
+                InkWell(
+                  onTap: (){
+                    // todo: remove it later
+                    _.goToResultScreenTest();
+                  },
+                  child: Container(
+                    color: Colors.green,
+                    margin: EdgeInsets.all(12),
+                    padding: EdgeInsets.all(16),
+                    child: Text('Go to result'),
+                  ),
+                ),
                 Expanded(
                   child: PageView.builder(
                     physics: NeverScrollableScrollPhysics(),

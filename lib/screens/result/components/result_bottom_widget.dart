@@ -1,12 +1,16 @@
 import 'package:english_mbti_test_app/constants.dart';
+import 'package:english_mbti_test_app/controllers/exam_controller.dart';
 import 'package:english_mbti_test_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class ResultBottomWidget extends StatelessWidget {
-  const ResultBottomWidget({
+  ResultBottomWidget({
     super.key,
   });
+
+  final ExamController _ = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +20,7 @@ class ResultBottomWidget extends StatelessWidget {
           Expanded(
             child: NavigationBtn(
               title: 'Main',
-              color: HexColor.fromHex('E4C728'),
+              color: _.result.lightColor,
               isNext: false,
             ),
           ),
@@ -26,7 +30,7 @@ class ResultBottomWidget extends StatelessWidget {
           Expanded(
             child: NavigationBtn(
               title: 'Description',
-              color: HexColor.fromHex('B69C0D'),
+              color: _.result.darkColor,
               isNext: true,
             ),
           ),

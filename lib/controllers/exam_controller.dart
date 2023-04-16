@@ -96,4 +96,12 @@ class ExamController extends GetxController
 
     Get.toNamed(Routes.RESULT);
   }
+
+  goToResultScreenTest() async{
+    result = PResultModel(type: "ISTP");    
+
+    await result.loadResult(); 
+
+    Get.toNamed(Routes.RESULT);
+  }
 }

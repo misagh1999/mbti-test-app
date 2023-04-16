@@ -43,6 +43,25 @@ abstract class Assets {
   static const IC_ISTP = 'assets/icons/mbti/ISTP.svg';
 }
 
+abstract class MBTI {
+  static const ENFJ = "ENFJ";
+  static const ENFP = "ENFP";
+  static const ENTJ = "ENTJ";
+  static const ENTP = "ENTP";
+  static const ESFJ = "ESFJ";
+  static const ESFP = "ESFP";
+  static const ESTJ = "ESTJ";
+  static const ESTP = "ESTP";
+  static const INFJ = "INFJ";
+  static const INFP = "INFP";
+  static const INTJ = "INTJ";
+  static const INTP = "INTP";
+  static const ISFJ = "ISFJ";
+  static const ISFP = "ISFP";
+  static const ISTJ = "ISTJ";
+  static const ISTP = "ISTP";
+}
+
 abstract class MyString {
   static const DESCRIPTION_DEMO =
       'The ENFJ type is a person who is interested and kind, and notices the admirable qualities of others. He can relate to a variety of people. The ENFJ type is an excellent communicator, a natural leader, and very skilled at motivating and persuading others. At work, he is likely to be very success-oriented and likes to get what he wants. This type is knowledgeable, disciplined, goal-oriented, and decisive, and expects the same from others.';

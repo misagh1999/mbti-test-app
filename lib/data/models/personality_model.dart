@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:english_mbti_test_app/constants.dart';
+import 'package:english_mbti_test_app/utils/utils.dart';
 import 'package:flutter/services.dart';
 
 import 'question.dart';
@@ -93,6 +95,9 @@ class PResultModel {
   late String relationship;
   late String hobby;
   late List<String> sugesstions;
+  late String imgPath;
+  late Color darkColor;
+  late Color lightColor;
 
   late Map<String, dynamic> _loadedJson;
 
@@ -108,6 +113,10 @@ class PResultModel {
     this.relationship = this._loadedJson['relationship'];
     this.hobby = this._loadedJson['hobby'];
     this.sugesstions = List<String>.from(this._loadedJson['suggestion']);
+    this.darkColor = HexColor.fromHex(this._loadedJson['dark_color']);
+    this.lightColor = HexColor.fromHex(this._loadedJson['light_color']);
+
+    this.imgPath = 'assets/icons/mbti/' + this.type + ".svg";
 
     return this;
   }
