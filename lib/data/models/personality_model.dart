@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:english_mbti_test_app/constants.dart';
 import 'package:english_mbti_test_app/utils/utils.dart';
 import 'package:flutter/services.dart';
 

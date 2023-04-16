@@ -1,3 +1,4 @@
+import 'package:english_mbti_test_app/controllers/exam_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -6,52 +7,58 @@ import '../../../constants.dart';
 import '../../../utils/utils.dart';
 
 class RelationshipSubScreen extends StatelessWidget {
-  const RelationshipSubScreen({
+  RelationshipSubScreen({
     super.key,
   });
+
+  final ExamController _ = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: [
-          SizedBox(
-            height: 24,
-          ),
-          Row(
-            children: [
-              Text(
-                'Relationship',
-                style: TextStyle(fontFamily: Fonts.Bold, fontSize: 16),
-              ),
-              Spacer(),
-              Text(
-                'ISTP',
-                style: TextStyle(fontFamily: Fonts.Bold, fontSize: 22),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          Text(
-            MyString.DESCRIPTION_DEMO,
-            style: TextStyle(color: HexColor.fromHex('5F5F5F'), fontSize: 16),
-          ),
-          Spacer(
-            flex: 3,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              SvgPicture.asset(
-                Assets.RELATIONSHIP_IMG,
-                height: Get.width / 2,
-              ),
-            ],
-          ),
-          Spacer()
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 24,
+            ),
+            Row(
+              children: [
+                Text(
+                  'Relationship',
+                  style: TextStyle(fontFamily: Fonts.Bold, fontSize: 16),
+                ),
+                Spacer(),
+                Text(
+                  _.result.type,
+                  style: TextStyle(fontFamily: Fonts.Bold, fontSize: 22),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Text(
+              _.result.relationship,
+              style: TextStyle(color: HexColor.fromHex('5F5F5F'), fontSize: 16),
+            ),
+            SizedBox(
+              height: 24,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                SvgPicture.asset(
+                  Assets.RELATIONSHIP_IMG,
+                  height: Get.width / 2,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 24,
+            )
+          ],
+        ),
       ),
     );
   }

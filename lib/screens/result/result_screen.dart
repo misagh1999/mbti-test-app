@@ -1,7 +1,6 @@
-import 'package:english_mbti_test_app/constants.dart';
-import 'package:english_mbti_test_app/utils/utils.dart';
+import 'package:english_mbti_test_app/controllers/result_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 import 'components/result_bottom_widget.dart';
 import 'components/result_main_widget.dart';
@@ -13,7 +12,9 @@ import 'sub_screens/sugestion_sub_screen.dart';
 import 'sub_screens/work_sub_screen.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({super.key});
+  ResultScreen({super.key});
+
+  final ResultController resultController = Get.put(ResultController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +26,28 @@ class ResultScreen extends StatelessWidget {
             children: [
               ResultTopWidget(),
               Expanded(
-                  child:
-                      ResultMainWidget()
-                      // DescriptionSubScreen()
-                      // WorkSubScreen()
-                      // RelationshipSubScreen()
-                      // HobbySubScreen()
-                      // SuggestionSubScreen()
-                      ),
+                  child: PageView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      controller: resultController.pageController,
+                      itemCount: resultController.MAX_SECTION_INDEX + 1,
+                      itemBuilder: (context, index) {
+                        switch (index) {
+                          case 0:
+                            return ResultMainWidget();
+                          case 1:
+                            return DescriptionSubScreen();
+                          case 2:
+                            return WorkSubScreen();
+                          case 3:
+                            return RelationshipSubScreen();
+                          case 4:
+                            return HobbySubScreen();
+                          case 5:
+                            return SuggestionSubScreen();
+                          default:
+                            return SizedBox();
+                        }
+                      })),
               ResultBottomWidget()
             ],
           ),
@@ -41,11 +56,3 @@ class ResultScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-

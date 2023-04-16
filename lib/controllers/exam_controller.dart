@@ -98,7 +98,7 @@ class ExamController extends GetxController
   }
 
   goToResultScreenTest() async{
-    result = PResultModel(type: "ISTP");    
+    result = PResultModel(type: "INFJ");    
 
     await result.loadResult(); 
 
