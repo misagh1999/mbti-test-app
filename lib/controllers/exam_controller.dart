@@ -4,13 +4,14 @@ import 'package:get/get.dart';
 import '../data/models/personality_model.dart';
 import '../data/models/question.dart';
 import '../routes/app_pages.dart';
+import '../widgets/dialog.dart';
 
 class ExamController extends GetxController
     with GetSingleTickerProviderStateMixin {
   late PageController _pageController;
   PageController get pageController => this._pageController;
 
-  List<Question> _questions = sample_data
+  late List<Question> _questions = sample_data
       .map((question) => Question(
           index: question['index'],
           option1: question['option1'],
@@ -30,9 +31,23 @@ class ExamController extends GetxController
 
   late PResultModel result;
 
+  _resetExam() {
+    _questions = sample_data
+        .map((question) => Question(
+            index: question['index'],
+            option1: question['option1'],
+            option2: question['option2'],
+            selectedOption: 0.obs,
+            type1: question['type1'],
+            type2: question['type2']))
+        .toList();
+    _questionIndex.value = 0;
+  }
+
   @override
   void onInit() {
     _pageController = PageController();
+    _resetExam();
     super.onInit();
   }
 
@@ -47,10 +62,9 @@ class ExamController extends GetxController
 
     _questions[_questionIndex.value].selectedOption.value = optionIndex;
 
-    // todo: removed delayed for test, put it later
-    // Future.delayed(Duration(milliseconds: 350), () {
+    Future.delayed(Duration(milliseconds: 250), () {
       nextQuestion();
-    // });
+    });
   }
 
   void previousQuestion() {
@@ -73,7 +87,7 @@ class ExamController extends GetxController
     }
   }
 
-  void _calculateAndGoToResultScreen() async{
+  void _calculateAndGoToResultScreen() async {
     String resultTypeStr = "";
 
     for (int i = 0; i < _questions.length; i++) {
@@ -90,18 +104,22 @@ class ExamController extends GetxController
 
     final model = PersonalityModel.createFromCode(resultTypeStr);
 
-    result = PResultModel(type: model.type);    
+    result = PResultModel(type: model.type);
 
     await result.loadResult();
 
-    Get.toNamed(Routes.RESULT);
+    _resetExam();
+
+    Get.offNamed(Routes.RESULT);
+
   }
 
-  goToResultScreenTest() async{
-    result = PResultModel(type: "INFJ");    
-
-    await result.loadResult(); 
-
-    Get.toNamed(Routes.RESULT);
+  onWillPopMain() {
+    showExitDialog(onCancel: () {
+      Get.back();
+    }, onConfirm: () {
+      Get.back();
+      Get.back();
+    });
   }
 }

@@ -1,7 +1,12 @@
+import 'package:flutter/material.dart';
+
 import 'utils/utils.dart';
 
 var primaryColor = HexColor.fromHex('527BE2');
 var secondayColor = HexColor.fromHex('F0E823');
+
+var primaryGradint =
+    LinearGradient(colors: [primaryColor.withOpacity(0.8), primaryColor]);
 
 abstract class Fonts {
   static const Light = 'Light';

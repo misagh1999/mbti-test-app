@@ -1,4 +1,5 @@
 import 'package:english_mbti_test_app/constants.dart';
+import 'package:english_mbti_test_app/controllers/exam_controller.dart';
 import 'package:english_mbti_test_app/routes/app_pages.dart';
 import 'package:english_mbti_test_app/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class StartScreen extends StatelessWidget {
-  const StartScreen({super.key});
+  StartScreen({super.key});
+
+  final ExamController examController = Get.put(ExamController());
 
   @override
   Widget build(BuildContext context) {
