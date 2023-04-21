@@ -87,89 +87,106 @@ class _StartScreenState extends State<StartScreen>
                       opacity: _fade1,
                       child: Column(
                         children: [
-                          Row(
-                            children: [
-                              Text(
-                                'MBTI Test',
-                                style: TextStyle(
-                                    fontFamily: Fonts.Bold, fontSize: 18),
-                              ),
-                              Spacer(),
-                              SvgPicture.asset(
-                                Assets.LOGO,
-                                width: 36,
-                              )
-                            ],
-                          ),
+                          _buildTopWidget(),
                           SizedBox(
                             height: 36,
                           ),
-                          Center(
-                            child: SvgPicture.asset(
-                              Assets.START_IMG,
-                              width: Get.width / 1.5,
-                            ),
-                          ),
+                          _buildStartImg(),
                         ],
                       ),
                     ),
                     Spacer(),
-                    SlideTransition(
-                      position: _slide1,
-                      child: FadeTransition(
-                        opacity: _fade2,
-                        child: Text(
-                          'Easy, reliable\nand good result',
-                          style: TextStyle(fontFamily: Fonts.Bold, fontSize: 36),
-                        ),
-                      ),
-                    ),
+                    _buildTitle(),
                     SizedBox(
                       height: 24,
                     ),
-                    SlideTransition(
-                      position: _slide2,
-                      child: FadeTransition(
-                        opacity: _fade2,
-                        child: Text(
-                          'Item #1,  by taking this test you can find your character and make sure you can find based you ideas',
-                          style: TextStyle(
-                              fontSize: 18, color: HexColor.fromHex('949494')),
-                        ),
-                      ),
-                    ),
+                    _buildDescription(),
                     Spacer(),
                   ],
                 ),
               ),
               Spacer(),
-              SlideTransition(
-                position: _slide3,
-                child: FadeTransition(
-                  opacity: _fade3,
-                  child: InkWell(
-                    onTap: () {
-                      Get.toNamed(Routes.QUESTION);
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(12),
-                      width: Get.width / 1.5,
-                      decoration: BoxDecoration(
-                          color: HexColor.fromHex('F0E823'),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Center(
-                        child: Text(
-                          'Start Test',
-                          style:
-                              TextStyle(fontFamily: Fonts.SemiBold, fontSize: 18),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              _buildStartTestBtn(),
               Spacer(),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Row _buildTopWidget() {
+    return Row(
+      children: [
+        Text(
+          'MBTI Test',
+          style: TextStyle(fontFamily: Fonts.Bold, fontSize: 18),
+        ),
+        Spacer(),
+        SvgPicture.asset(
+          Assets.LOGO,
+          width: 36,
+        )
+      ],
+    );
+  }
+
+  Center _buildStartImg() {
+    return Center(
+      child: SvgPicture.asset(
+        Assets.START_IMG,
+        width: Get.width / 1.5,
+      ),
+    );
+  }
+
+  SlideTransition _buildTitle() {
+    return SlideTransition(
+      position: _slide1,
+      child: FadeTransition(
+        opacity: _fade2,
+        child: Text(
+          'Easy, reliable\nand good result',
+          style: TextStyle(fontFamily: Fonts.Bold, fontSize: 36),
+        ),
+      ),
+    );
+  }
+
+  SlideTransition _buildDescription() {
+    return SlideTransition(
+      position: _slide2,
+      child: FadeTransition(
+        opacity: _fade2,
+        child: Text(
+          'Item #1,  by taking this test you can find your character and make sure you can find based you ideas',
+          style: TextStyle(fontSize: 18, color: HexColor.fromHex('949494')),
+        ),
+      ),
+    );
+  }
+
+  SlideTransition _buildStartTestBtn() {
+    return SlideTransition(
+      position: _slide3,
+      child: FadeTransition(
+        opacity: _fade3,
+        child: InkWell(
+          onTap: () {
+            Get.toNamed(Routes.QUESTION);
+          },
+          child: Container(
+            padding: EdgeInsets.all(12),
+            width: Get.width / 1.5,
+            decoration: BoxDecoration(
+                color: HexColor.fromHex('F0E823'),
+                borderRadius: BorderRadius.circular(20)),
+            child: Center(
+              child: Text(
+                'Start Test',
+                style: TextStyle(fontFamily: Fonts.SemiBold, fontSize: 18),
+              ),
+            ),
           ),
         ),
       ),
