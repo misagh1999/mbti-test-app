@@ -71,79 +71,93 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   opacity: _fadeAnim,
                   child: Column(
                     children: [
-                      SvgPicture.asset(
-                        Assets.LOGO,
-                        width: 48,
-                      ),
+                      _buildLogoWidget(),
                       SizedBox(
                         height: 16,
                       ),
-                      RichText(
-                        textAlign: TextAlign.center,
-                        text: TextSpan(
-                            text: 'Welcome to\n',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: Fonts.Bold,
-                                fontSize: 22),
-                            children: [
-                              TextSpan(
-                                  text: 'MBTI Test',
-                                  style: TextStyle(color: primaryColor)),
-                              TextSpan(text: ' App')
-                            ]),
-                      ),
+                      _buildWelcomeTitleText(),
                       SizedBox(
                         height: 16,
                       ),
-                      Text(
-                        'An App you can find your \npersonality type',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: HexColor.fromHex('A0BBFF'),
-                            fontSize: 18,
-                            fontFamily: Fonts.Medium),
-                      ),
+                      _buildDescriptionText(),
                     ],
                   ),
                 ),
               ),
               Spacer(),
-              SlideTransition(
-                position: _slide2Anim,
-                child: FadeTransition(
-                    opacity: _imgFadeAnim,
-                    child: SvgPicture.asset(Assets.WELCOME_IMG)),
-              ),
+              _buildWelcomeImg(),
               Spacer(),
-              SlideTransition(
-                position: _slide3Anim,
-                child: FadeTransition(
-                  opacity: _btnFadeAnim,
-                  child: InkWell(
-                    onTap: () {
-                      Get.toNamed(Routes.START);
-                    },
-                    borderRadius: BorderRadius.circular(15),
-                    child: Container(
-                      width: Get.width / 2,
-                      padding: EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: primaryColor),
-                      child: Center(
-                        child: Text(
-                          'Get Started',
-                          style: TextStyle(
-                              color: Colors.white, fontFamily: Fonts.SemiBold),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              _buildStartBtn(),
               Spacer()
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  SvgPicture _buildLogoWidget() {
+    return SvgPicture.asset(
+                      Assets.LOGO,
+                      width: 48,
+                    );
+  }
+
+  RichText _buildWelcomeTitleText() {
+    return RichText(
+      textAlign: TextAlign.center,
+      text: TextSpan(
+          text: 'Welcome to\n',
+          style: TextStyle(
+              color: Colors.black, fontFamily: Fonts.Bold, fontSize: 22),
+          children: [
+            TextSpan(text: 'MBTI Test', style: TextStyle(color: primaryColor)),
+            TextSpan(text: ' App')
+          ]),
+    );
+  }
+
+  Text _buildDescriptionText() {
+    return Text(
+      'An App you can find your \npersonality type',
+      textAlign: TextAlign.center,
+      style: TextStyle(
+          color: HexColor.fromHex('A0BBFF'),
+          fontSize: 18,
+          fontFamily: Fonts.Medium),
+    );
+  }
+
+  SlideTransition _buildWelcomeImg() {
+    return SlideTransition(
+      position: _slide2Anim,
+      child: FadeTransition(
+          opacity: _imgFadeAnim, child: SvgPicture.asset(Assets.WELCOME_IMG)),
+    );
+  }
+
+  SlideTransition _buildStartBtn() {
+    return SlideTransition(
+      position: _slide3Anim,
+      child: FadeTransition(
+        opacity: _btnFadeAnim,
+        child: InkWell(
+          onTap: () {
+            Get.toNamed(Routes.START);
+          },
+          borderRadius: BorderRadius.circular(15),
+          child: Container(
+            width: Get.width / 2,
+            padding: EdgeInsets.all(16),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15), color: primaryColor),
+            child: Center(
+              child: Text(
+                'Get Started',
+                style:
+                    TextStyle(color: Colors.white, fontFamily: Fonts.SemiBold),
+              ),
+            ),
           ),
         ),
       ),

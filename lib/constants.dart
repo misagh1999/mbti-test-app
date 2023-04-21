@@ -28,24 +28,6 @@ abstract class Assets {
   static const PREVIOUS_ICON = 'assets/icons/previous_icon.svg';
   static const NEXT_ICON = 'assets/icons/next_icon.svg';
   static const BACK_ICON = 'assets/icons/back_icon.svg';
-
-  //MBTI
-  static const IC_ENFJ = 'assets/icons/mbti/ENFJ.svg';
-  static const IC_ENFP = 'assets/icons/mbti/ENFP.svg';
-  static const IC_ENTJ = 'assets/icons/mbti/ENTJ.svg';
-  static const IC_ENTP = 'assets/icons/mbti/ENTP.svg';
-  static const IC_ESFJ = 'assets/icons/mbti/ESFJ.svg';
-  static const IC_ESFP = 'assets/icons/mbti/ESFP.svg';
-  static const IC_ESTJ = 'assets/icons/mbti/ESTJ.svg';
-  static const IC_ESTP = 'assets/icons/mbti/ESTP.svg';
-  static const IC_INFJ = 'assets/icons/mbti/INFJ.svg';
-  static const IC_INFP = 'assets/icons/mbti/INFP.svg';
-  static const IC_INTJ = 'assets/icons/mbti/INTJ.svg';
-  static const IC_INTP = 'assets/icons/mbti/INTP.svg';
-  static const IC_ISFJ = 'assets/icons/mbti/ISFJ.svg';
-  static const IC_ISFP = 'assets/icons/mbti/ISFP.svg';
-  static const IC_ISTJ = 'assets/icons/mbti/ISTJ.svg';
-  static const IC_ISTP = 'assets/icons/mbti/ISTP.svg';
 }
 
 abstract class MBTI {
