@@ -95,16 +95,6 @@ class QuestionScreen extends StatelessWidget {
                     style: TextStyle(
                         color: primaryColor, fontFamily: Fonts.Medium),
                   ),
-                  InkWell(
-                    onTap: (){
-                      _.jumpToFakeResult();
-                    },
-                    child: Container(
-                      width: 50,
-                      height: 40,
-                      color: Colors.green,
-                    ),
-                  ),
                   Expanded(
                     child: PageView.builder(
                       physics: NeverScrollableScrollPhysics(),
