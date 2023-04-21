@@ -1,9 +1,10 @@
 import 'package:english_mbti_test_app/bindings/exam_bindings.dart';
-import 'package:english_mbti_test_app/screens/question/question_screen.dart';
 import 'package:english_mbti_test_app/screens/result/result_screen.dart';
 import 'package:english_mbti_test_app/screens/start/start_screen.dart';
 import 'package:english_mbti_test_app/screens/welcome/welcome_screen.dart';
 import 'package:get/get.dart';
+
+import '../screens/exam/exam_screen.dart';
 
 part './app_routes.dart';
 
@@ -12,7 +13,7 @@ class AppPages {
     GetPage(name: Routes.WELCOME, page: () => WelcomeScreen()),
     GetPage(
         name: Routes.START, page: () => StartScreen(), binding: ExamBinding()),
-    GetPage(name: Routes.QUESTION, page: () => QuestionScreen()),
+    GetPage(name: Routes.QUESTION, page: () => ExamScreen()),
     GetPage(name: Routes.RESULT, page: () => ResultScreen())
   ];
 }
