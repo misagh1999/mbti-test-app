@@ -1,3 +1,4 @@
+import 'package:english_mbti_test_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -112,6 +113,16 @@ class ExamController extends GetxController
 
     Get.offNamed(Routes.RESULT);
 
+  }
+
+  jumpToFakeResult() async {
+    result = PResultModel(type: MBTI.ENFJ);
+
+    await result.loadResult();
+
+    _resetExam();
+
+    Get.offNamed(Routes.RESULT);
   }
 
   onWillPopMain() {

@@ -16,7 +16,7 @@ class QuestionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: WillPopScope(
-        onWillPop: (){
+        onWillPop: () {
           return _.onWillPopMain();
         },
         child: SafeArea(
@@ -53,7 +53,9 @@ class QuestionScreen extends StatelessWidget {
                         child: Row(
                           children: [
                             Container(
-                              width:( (_.questionIndex.value + 1) / _.questions.length) * (Get.width - 200),
+                              width: ((_.questionIndex.value + 1) /
+                                      _.questions.length) *
+                                  (Get.width - 200),
                               decoration: BoxDecoration(
                                   color: primaryColor,
                                   borderRadius: BorderRadius.circular(5)),
@@ -90,8 +92,18 @@ class QuestionScreen extends StatelessWidget {
                         (_.questionIndex.value + 1).toString() +
                         "/" +
                         _.questions.length.toString(),
-                    style:
-                        TextStyle(color: primaryColor, fontFamily: Fonts.Medium),
+                    style: TextStyle(
+                        color: primaryColor, fontFamily: Fonts.Medium),
+                  ),
+                  InkWell(
+                    onTap: (){
+                      _.jumpToFakeResult();
+                    },
+                    child: Container(
+                      width: 50,
+                      height: 40,
+                      color: Colors.green,
+                    ),
                   ),
                   Expanded(
                     child: PageView.builder(
@@ -103,26 +115,28 @@ class QuestionScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Obx(
-                              ()=> OptionWidget(
+                              () => OptionWidget(
                                 text: _.questions[index].option1,
                                 optionIndex: 1,
                                 questionIndex: index,
                                 press: () => _.submitAnswer(1),
                                 isSelected:
-                                    _.questions[index].selectedOption.value == 1,
+                                    _.questions[index].selectedOption.value ==
+                                        1,
                               ),
                             ),
                             SizedBox(
                               height: 16,
                             ),
                             Obx(
-                              ()=> OptionWidget(
+                              () => OptionWidget(
                                 text: _.questions[index].option2,
                                 optionIndex: 2,
                                 questionIndex: index,
                                 press: () => _.submitAnswer(2),
                                 isSelected:
-                                    _.questions[index].selectedOption.value == 2,
+                                    _.questions[index].selectedOption.value ==
+                                        2,
                               ),
                             ),
                           ],
