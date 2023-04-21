@@ -6,10 +6,55 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class StartScreen extends StatelessWidget {
+class StartScreen extends StatefulWidget {
   StartScreen({super.key});
 
+  @override
+  State<StartScreen> createState() => _StartScreenState();
+}
+
+class _StartScreenState extends State<StartScreen>
+    with SingleTickerProviderStateMixin {
   final ExamController examController = Get.put(ExamController());
+
+  late AnimationController _animationController;
+  late Animation<double> _fade1;
+  late Animation<double> _fade2;
+  late Animation<double> _fade3;
+
+  late Animation<Offset> _slide1;
+  late Animation<Offset> _slide2;
+  late Animation<Offset> _slide3;
+
+  @override
+  void initState() {
+    super.initState();
+    _initAnimation();
+  }
+
+  _initAnimation() {
+    _animationController = AnimationController(
+        vsync: this, duration: Duration(milliseconds: 3000));
+
+    _fade1 = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+        parent: _animationController, curve: Interval(0.1, 0.5)));
+    _fade2 = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+        parent: _animationController, curve: Interval(0.5, 0.75)));
+    _fade3 = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+        parent: _animationController, curve: Interval(0.75, 1.0)));
+
+    _slide1 = Tween(begin: Offset(0.0, -0.5), end: Offset.zero).animate(
+        CurvedAnimation(
+            parent: _animationController, curve: Interval(0.5, 0.75)));
+    _slide2 = Tween(begin: Offset(0.0, 0.5), end: Offset.zero).animate(
+        CurvedAnimation(
+            parent: _animationController, curve: Interval(0.5, 0.75)));
+    _slide3 = Tween(begin: Offset(0.0, 0.5), end: Offset.zero).animate(
+        CurvedAnimation(
+            parent: _animationController, curve: Interval(0.75, 1.0)));
+
+    _animationController.forward();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,62 +83,87 @@ class StartScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Text(
-                          'MBTI Test',
-                          style:
-                              TextStyle(fontFamily: Fonts.Bold, fontSize: 18),
-                        ),
-                        Spacer(),
-                        SvgPicture.asset(
-                          Assets.LOGO,
-                          width: 36,
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 36,
-                    ),
-                    Center(
-                      child: SvgPicture.asset(
-                        Assets.START_IMG,
-                        width: Get.width / 1.5,
+                    FadeTransition(
+                      opacity: _fade1,
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                'MBTI Test',
+                                style: TextStyle(
+                                    fontFamily: Fonts.Bold, fontSize: 18),
+                              ),
+                              Spacer(),
+                              SvgPicture.asset(
+                                Assets.LOGO,
+                                width: 36,
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 36,
+                          ),
+                          Center(
+                            child: SvgPicture.asset(
+                              Assets.START_IMG,
+                              width: Get.width / 1.5,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     Spacer(),
-                    Text(
-                      'Easy, reliable\nand good result',
-                      style: TextStyle(fontFamily: Fonts.Bold, fontSize: 36),
+                    SlideTransition(
+                      position: _slide1,
+                      child: FadeTransition(
+                        opacity: _fade2,
+                        child: Text(
+                          'Easy, reliable\nand good result',
+                          style: TextStyle(fontFamily: Fonts.Bold, fontSize: 36),
+                        ),
+                      ),
                     ),
                     SizedBox(
                       height: 24,
                     ),
-                    Text(
-                      'Item #1,  by taking this test you can find your character and make sure you can find based you ideas',
-                      style: TextStyle(
-                          fontSize: 18, color: HexColor.fromHex('949494')),
+                    SlideTransition(
+                      position: _slide2,
+                      child: FadeTransition(
+                        opacity: _fade2,
+                        child: Text(
+                          'Item #1,  by taking this test you can find your character and make sure you can find based you ideas',
+                          style: TextStyle(
+                              fontSize: 18, color: HexColor.fromHex('949494')),
+                        ),
+                      ),
                     ),
                     Spacer(),
                   ],
                 ),
               ),
               Spacer(),
-              InkWell(
-                onTap: () {
-                  Get.toNamed(Routes.QUESTION);
-                },
-                child: Container(
-                  padding: EdgeInsets.all(12),
-                  width: Get.width / 1.5,
-                  decoration: BoxDecoration(
-                      color: HexColor.fromHex('F0E823'),
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Center(
-                    child: Text(
-                      'Start Test',
-                      style:
-                          TextStyle(fontFamily: Fonts.SemiBold, fontSize: 18),
+              SlideTransition(
+                position: _slide3,
+                child: FadeTransition(
+                  opacity: _fade3,
+                  child: InkWell(
+                    onTap: () {
+                      Get.toNamed(Routes.QUESTION);
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(12),
+                      width: Get.width / 1.5,
+                      decoration: BoxDecoration(
+                          color: HexColor.fromHex('F0E823'),
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Center(
+                        child: Text(
+                          'Start Test',
+                          style:
+                              TextStyle(fontFamily: Fonts.SemiBold, fontSize: 18),
+                        ),
+                      ),
                     ),
                   ),
                 ),
