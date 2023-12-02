@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import '../../../constants.dart';
-import '../../../utils/utils.dart';
+import '../../../../constants.dart';
+import '../../../../utils/utils.dart';
 
 class ResultTopWidget extends StatelessWidget {
   const ResultTopWidget({
@@ -15,14 +15,14 @@ class ResultTopWidget extends StatelessWidget {
     return Row(
       children: [
         InkWell(
-          onTap: (){
-            Get.back();
-          },
-          borderRadius: BorderRadius.circular(24),
+            onTap: () {
+              Get.back();
+            },
+            borderRadius: BorderRadius.circular(24),
             child: SvgPicture.asset(
-          Assets.BACK_ICON,
-          width: 20,
-        )),
+              Assets.BACK_ICON,
+              width: 20,
+            )),
         Spacer(),
         Text(
           'Your result',

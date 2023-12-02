@@ -2,7 +2,7 @@ import 'package:english_mbti_test_app/controllers/exam_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../constants.dart';
+import '../../../../constants.dart';
 import '../components/suggestion_item_widget.dart';
 
 class SuggestionSubScreen extends StatelessWidget {
@@ -37,8 +37,10 @@ class SuggestionSubScreen extends StatelessWidget {
             SizedBox(
               height: 16,
             ),
-            for(String item in _.result.sugesstions)
-            SuggestionItemWidget(text: item,),
+            for (String item in _.result.sugesstions)
+              SuggestionItemWidget(
+                text: item,
+              ),
           ],
         ),
       ),

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import '../../../constants.dart';
-import '../../../utils/utils.dart';
+import '../../../../constants.dart';
+import '../../../../utils/utils.dart';
 
 class RelationshipSubScreen extends StatefulWidget {
   RelationshipSubScreen({
@@ -15,7 +15,8 @@ class RelationshipSubScreen extends StatefulWidget {
   State<RelationshipSubScreen> createState() => _RelationshipSubScreenState();
 }
 
-class _RelationshipSubScreenState extends State<RelationshipSubScreen> with SingleTickerProviderStateMixin {
+class _RelationshipSubScreenState extends State<RelationshipSubScreen>
+    with SingleTickerProviderStateMixin {
   final ExamController _ = Get.find();
 
   late AnimationController _animationController;
@@ -68,7 +69,8 @@ class _RelationshipSubScreenState extends State<RelationshipSubScreen> with Sing
                 position: _slide1,
                 child: Text(
                   _.result.relationship,
-                  style: TextStyle(color: HexColor.fromHex('5F5F5F'), fontSize: 16),
+                  style: TextStyle(
+                      color: HexColor.fromHex('5F5F5F'), fontSize: 16),
                 ),
               ),
               SizedBox(

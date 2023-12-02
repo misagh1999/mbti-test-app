@@ -1,19 +1,20 @@
 import 'package:english_mbti_test_app/constants.dart';
 import 'package:english_mbti_test_app/controllers/exam_controller.dart';
-import 'package:english_mbti_test_app/routes/app_pages.dart';
 import 'package:english_mbti_test_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class StartScreen extends StatefulWidget {
-  StartScreen({super.key});
+import '../app_pages.dart';
+
+class StartPage extends StatefulWidget {
+  StartPage({super.key});
 
   @override
-  State<StartScreen> createState() => _StartScreenState();
+  State<StartPage> createState() => _StartPageState();
 }
 
-class _StartScreenState extends State<StartScreen>
+class _StartPageState extends State<StartPage>
     with SingleTickerProviderStateMixin {
   final ExamController examController = Get.put(ExamController());
 

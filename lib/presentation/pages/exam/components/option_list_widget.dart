@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../controllers/exam_controller.dart';
+import '../../../../controllers/exam_controller.dart';
 import 'option_widget.dart';
 
 class OptionListWidget extends StatelessWidget {

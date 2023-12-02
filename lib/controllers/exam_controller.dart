@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 
 import '../data/models/personality_model.dart';
 import '../data/models/question.dart';
-import '../routes/app_pages.dart';
-import '../widgets/dialog.dart';
+import '../presentation/pages/app_pages.dart';
+import '../presentation/widgets/dialog.dart';
 
 class ExamController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -112,7 +112,6 @@ class ExamController extends GetxController
     _resetExam();
 
     Get.offNamed(Routes.RESULT);
-
   }
 
   jumpToFakeResult() async {

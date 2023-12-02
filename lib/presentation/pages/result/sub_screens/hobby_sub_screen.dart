@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import '../../../constants.dart';
-import '../../../utils/utils.dart';
+import '../../../../constants.dart';
+import '../../../../utils/utils.dart';
 
 class HobbySubScreen extends StatefulWidget {
   HobbySubScreen({
@@ -15,7 +15,8 @@ class HobbySubScreen extends StatefulWidget {
   State<HobbySubScreen> createState() => _HobbySubScreenState();
 }
 
-class _HobbySubScreenState extends State<HobbySubScreen> with SingleTickerProviderStateMixin{
+class _HobbySubScreenState extends State<HobbySubScreen>
+    with SingleTickerProviderStateMixin {
   final ExamController _ = Get.find();
 
   late AnimationController _animationController;
@@ -35,7 +36,6 @@ class _HobbySubScreenState extends State<HobbySubScreen> with SingleTickerProvid
 
     _animationController.forward();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,8 @@ class _HobbySubScreenState extends State<HobbySubScreen> with SingleTickerProvid
                 position: _slide1,
                 child: Text(
                   _.result.hobby,
-                  style: TextStyle(color: HexColor.fromHex('5F5F5F'), fontSize: 16),
+                  style: TextStyle(
+                      color: HexColor.fromHex('5F5F5F'), fontSize: 16),
                 ),
               ),
               SizedBox(

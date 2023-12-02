@@ -1,7 +1,8 @@
-import 'package:english_mbti_test_app/routes/app_pages.dart';
 import 'package:english_mbti_test_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'presentation/pages/app_pages.dart';
 
 void main() {
   runApp(const MyApp());

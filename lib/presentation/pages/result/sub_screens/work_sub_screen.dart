@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import '../../../constants.dart';
-import '../../../utils/utils.dart';
+import '../../../../constants.dart';
+import '../../../../utils/utils.dart';
 
 class WorkSubScreen extends StatefulWidget {
   WorkSubScreen({
@@ -15,7 +15,8 @@ class WorkSubScreen extends StatefulWidget {
   State<WorkSubScreen> createState() => _WorkSubScreenState();
 }
 
-class _WorkSubScreenState extends State<WorkSubScreen> with SingleTickerProviderStateMixin{
+class _WorkSubScreenState extends State<WorkSubScreen>
+    with SingleTickerProviderStateMixin {
   final ExamController _ = Get.find();
 
   late AnimationController _animationController;
@@ -68,7 +69,8 @@ class _WorkSubScreenState extends State<WorkSubScreen> with SingleTickerProvider
                 position: _slide1,
                 child: Text(
                   _.result.work,
-                  style: TextStyle(color: HexColor.fromHex('5F5F5F'), fontSize: 16),
+                  style: TextStyle(
+                      color: HexColor.fromHex('5F5F5F'), fontSize: 16),
                 ),
               ),
               Row(

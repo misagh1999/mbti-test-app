@@ -1,18 +1,19 @@
 import 'package:english_mbti_test_app/constants.dart';
-import 'package:english_mbti_test_app/routes/app_pages.dart';
 import 'package:english_mbti_test_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class WelcomeScreen extends StatefulWidget {
-  const WelcomeScreen({super.key});
+import '../app_pages.dart';
+
+class WelcomePage extends StatefulWidget {
+  const WelcomePage({super.key});
 
   @override
-  State<WelcomeScreen> createState() => _WelcomeScreenState();
+  State<WelcomePage> createState() => _WelcomePageState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen>
+class _WelcomePageState extends State<WelcomePage>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _fadeAnim;
@@ -98,9 +99,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
   SvgPicture _buildLogoWidget() {
     return SvgPicture.asset(
-                      Assets.LOGO,
-                      width: 48,
-                    );
+      Assets.LOGO,
+      width: 48,
+    );
   }
 
   RichText _buildWelcomeTitleText() {

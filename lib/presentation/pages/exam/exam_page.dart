@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'components/option_list_widget.dart';
 import 'components/progress_exam_widget.dart';
 
-class ExamScreen extends StatelessWidget {
-  ExamScreen({super.key});
+class ExamPage extends StatelessWidget {
+  ExamPage({super.key});
 
   final ExamController _ = Get.find();
 

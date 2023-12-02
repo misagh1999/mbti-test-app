@@ -1,7 +1,7 @@
 import 'package:english_mbti_test_app/constants.dart';
 import 'package:flutter/material.dart';
 
-import '../../../utils/utils.dart';
+import '../../../../utils/utils.dart';
 
 class OptionWidget extends StatelessWidget {
   OptionWidget({

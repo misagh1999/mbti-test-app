@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import '../../../constants.dart';
-import '../../../controllers/exam_controller.dart';
-import '../../../utils/utils.dart';
+import '../../../../constants.dart';
+import '../../../../controllers/exam_controller.dart';
+import '../../../../utils/utils.dart';
 
 class ProgressExamWidget extends StatelessWidget {
   ProgressExamWidget({

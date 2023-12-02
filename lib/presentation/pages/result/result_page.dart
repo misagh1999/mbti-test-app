@@ -11,8 +11,8 @@ import 'sub_screens/relationship_sub_screen.dart';
 import 'sub_screens/sugestion_sub_screen.dart';
 import 'sub_screens/work_sub_screen.dart';
 
-class ResultScreen extends StatelessWidget {
-  ResultScreen({super.key});
+class ResultPage extends StatelessWidget {
+  ResultPage({super.key});
 
   final ResultController resultController = Get.put(ResultController());
 
