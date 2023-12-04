@@ -1,7 +1,9 @@
 import 'package:english_mbti_test_app/constants.dart';
 import 'package:english_mbti_test_app/controllers/exam_controller.dart';
+import 'package:english_mbti_test_app/presentation/blocs/result/result_bloc.dart';
 import 'package:english_mbti_test_app/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +18,7 @@ class DescriptionSubScreen extends StatefulWidget {
 
 class _DescriptionSubScreenState extends State<DescriptionSubScreen>
     with SingleTickerProviderStateMixin {
-  final ExamController _ = Get.find();
+  // final ExamController _ = Get.find();
 
   late AnimationController _animationController;
   late Animation<double> _fade1;
@@ -41,53 +43,62 @@ class _DescriptionSubScreenState extends State<DescriptionSubScreen>
     _initAnimation();
     return FadeTransition(
       opacity: _fade1,
-      child: Container(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 24,
-            ),
-            Row(
-              children: [
-                Text(
-                  'Description',
-                  style: TextStyle(fontFamily: Fonts.Bold, fontSize: 16),
-                ),
-                Spacer(),
-                Text(
-                  _.result.type,
-                  style: TextStyle(fontFamily: Fonts.Bold, fontSize: 22),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 16,
-            ),
-            SlideTransition(
-              position: _slide1,
-              child: Text(
-                _.result.desc,
-                style: TextStyle(color: HexColor.fromHex('5F5F5F'), fontSize: 16),
-              ),
-            ),
-            Spacer(
-              flex: 3,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                SlideTransition(
-                  position: _slide1,
-                  child: SvgPicture.asset(
-                    _.result.imgPath,
-                    height: Get.width / 2,
+      child: BlocBuilder<ResultBloc, ResultState>(
+        builder: (context, state) {
+          return (state is ResultMainState)
+              ? Container(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 24,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Description',
+                            style:
+                                TextStyle(fontFamily: Fonts.Bold, fontSize: 16),
+                          ),
+                          Spacer(),
+                          Text(
+                            state.result.type,
+                            style:
+                                TextStyle(fontFamily: Fonts.Bold, fontSize: 22),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      SlideTransition(
+                        position: _slide1,
+                        child: Text(
+                          state.result.desc,
+                          style: TextStyle(
+                              color: HexColor.fromHex('5F5F5F'), fontSize: 16),
+                        ),
+                      ),
+                      Spacer(
+                        flex: 3,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          SlideTransition(
+                            position: _slide1,
+                            child: SvgPicture.asset(
+                              state.result.imgPath,
+                              height: Get.width / 2,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Spacer()
+                    ],
                   ),
-                ),
-              ],
-            ),
-            Spacer()
-          ],
-        ),
+                )
+              : Container();
+        },
       ),
     );
   }

@@ -1,44 +1,57 @@
 import 'package:english_mbti_test_app/constants.dart';
-import 'package:english_mbti_test_app/controllers/exam_controller.dart';
-import 'package:english_mbti_test_app/controllers/result_controller.dart';
+import 'package:english_mbti_test_app/presentation/blocs/result/result_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 
 class ResultBottomWidget extends StatelessWidget {
   ResultBottomWidget({
+    required this.bloc,
     super.key,
   });
 
-  final ExamController _ = Get.find();
-  final ResultController resultController = Get.find();
+  // final ExamController _ = Get.find();
+  // final ResultController resultController = Get.find();
+  final ResultBloc bloc;
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => Container(
-        child: Row(
-          children: [
-            Expanded(
-              child: resultController.isPreviousBtnEnabled.value ? NavigationBtn(
-                title: resultController.previousTitle.value,
-                color: _.result.lightColor,
-                isNext: false, press: ()=> resultController.onPreviousBtnClicked(),
-              ) : SizedBox(),
-            ),
-            SizedBox(
-              width: 12,
-            ),
-            Expanded(
-              child: resultController.isNextBtnEnabled.value ?  NavigationBtn(
-                title: resultController.nextTitle.value,
-                color: _.result.darkColor,
-                isNext: true, press: ()=> resultController.onNextBtnClicked(),
-              ) : SizedBox(),
-            ),
-          ],
-        ),
-      ),
+    return BlocBuilder<ResultBloc, ResultState>(
+      builder: (context, state) {
+        return (state is ResultMainState)
+            ? Container(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: state.isPreviousBtnEnabled
+                          ? NavigationBtn(
+                              title: state.previousTitle,
+                              color: state.result.lightColor,
+                              isNext: false,
+                              press: () => bloc.add(PreviousBtnClicked())
+                              // resultController.onPreviousBtnClicked(),
+                              )
+                          : SizedBox(),
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    Expanded(
+                      child: state.isNextBtnEnabled
+                          ? NavigationBtn(
+                              title: state.nextTitle,
+                              color: state.result.darkColor,
+                              isNext: true,
+                              press: () => bloc.add(NextBtnClicked())
+                              // resultController.onNextBtnClicked(),
+                              )
+                          : SizedBox(),
+                    ),
+                  ],
+                ),
+              )
+            : Container();
+      },
     );
   }
 }
@@ -64,8 +77,8 @@ class NavigationBtn extends StatelessWidget {
       borderRadius: BorderRadius.circular(25),
       child: Container(
         padding: EdgeInsets.all(12),
-        decoration:
-            BoxDecoration(color: color, borderRadius: BorderRadius.circular(25)),
+        decoration: BoxDecoration(
+            color: color, borderRadius: BorderRadius.circular(25)),
         child: isNext
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.center,

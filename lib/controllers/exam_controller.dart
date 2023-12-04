@@ -111,7 +111,7 @@ class ExamController extends GetxController
 
     _resetExam();
 
-    Get.offNamed(Routes.RESULT);
+    Get.offNamed(Routes.RESULT, arguments: result);
   }
 
   jumpToFakeResult() async {

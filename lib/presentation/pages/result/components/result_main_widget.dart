@@ -1,7 +1,9 @@
 import 'package:english_mbti_test_app/constants.dart';
 import 'package:english_mbti_test_app/controllers/exam_controller.dart';
+import 'package:english_mbti_test_app/presentation/blocs/result/result_bloc.dart';
 import 'package:english_mbti_test_app/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +18,7 @@ class ResultMainWidget extends StatefulWidget {
 
 class _ResultMainWidgetState extends State<ResultMainWidget>
     with SingleTickerProviderStateMixin {
-  final ExamController _ = Get.find();
+  // final ExamController _ = Get.find();
 
   late AnimationController _animationController;
   late Animation<double> _fade1;
@@ -42,75 +44,84 @@ class _ResultMainWidgetState extends State<ResultMainWidget>
   @override
   Widget build(BuildContext context) {
     _initAnimation();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: 24,
-        ),
-        FadeTransition(
-          opacity: _fade1,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+    return BlocBuilder<ResultBloc, ResultState>(
+      builder: (context, state) {
+        return (state is ResultMainState)
+            ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Your Personality Type',
-                    style: TextStyle(
-                        color: HexColor.fromHex('A4A4A4'), fontSize: 16),
+                  SizedBox(
+                    height: 24,
                   ),
-                  Text(
-                    _.result.type,
-                    style: TextStyle(fontFamily: Fonts.Bold, fontSize: 32),
+                  FadeTransition(
+                    opacity: _fade1,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Your Personality Type',
+                              style: TextStyle(
+                                  color: HexColor.fromHex('A4A4A4'),
+                                  fontSize: 16),
+                            ),
+                            Text(
+                              state.result.type,
+                              style: TextStyle(
+                                  fontFamily: Fonts.Bold, fontSize: 32),
+                            ),
+                            SizedBox(
+                              height: 12,
+                            ),
+                            Text(
+                              state.result.title,
+                              style: TextStyle(
+                                  color: HexColor.fromHex('9D9D9D'),
+                                  fontSize: 16),
+                            )
+                          ],
+                        ),
+                        Spacer(),
+                        SvgPicture.asset(
+                          state.result.imgPath,
+                          height: Get.width / 2.5,
+                        )
+                      ],
+                    ),
                   ),
                   SizedBox(
-                    height: 12,
+                    height: 24,
                   ),
-                  Text(
-                    _.result.title,
-                    style: TextStyle(
-                        color: HexColor.fromHex('9D9D9D'), fontSize: 16),
+                  FadeTransition(
+                    opacity: _fade2,
+                    child: Text(
+                      'Favorite Sentence',
+                      style: TextStyle(fontFamily: Fonts.Bold, fontSize: 16),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  SlideTransition(
+                    position: _slideAnim,
+                    child: FadeTransition(
+                      opacity: _fade2,
+                      child: Text(
+                        state.result.favoriteSentence,
+                        style: TextStyle(
+                            color: HexColor.fromHex('A4A4A4'),
+                            fontSize: 20,
+                            fontFamily: Fonts.SemiBold),
+                      ),
+                    ),
                   )
                 ],
-              ),
-              Spacer(),
-              SvgPicture.asset(
-                _.result.imgPath,
-                height: Get.width / 2.5,
               )
-            ],
-          ),
-        ),
-        SizedBox(
-          height: 24,
-        ),
-        FadeTransition(
-          opacity: _fade2,
-          child: Text(
-            'Favorite Sentence',
-            style: TextStyle(fontFamily: Fonts.Bold, fontSize: 16),
-          ),
-        ),
-        SizedBox(
-          height: 8,
-        ),
-        SlideTransition(
-          position: _slideAnim,
-          child: FadeTransition(
-            opacity: _fade2,
-            child: Text(
-              _.result.favoriteSentence,
-              style: TextStyle(
-                  color: HexColor.fromHex('A4A4A4'),
-                  fontSize: 20,
-                  fontFamily: Fonts.SemiBold),
-            ),
-          ),
-        )
-      ],
+            : Container();
+      },
     );
   }
 }

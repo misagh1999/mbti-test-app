@@ -1,5 +1,7 @@
 import 'package:english_mbti_test_app/controllers/exam_controller.dart';
+import 'package:english_mbti_test_app/presentation/blocs/result/result_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +19,7 @@ class RelationshipSubScreen extends StatefulWidget {
 
 class _RelationshipSubScreenState extends State<RelationshipSubScreen>
     with SingleTickerProviderStateMixin {
-  final ExamController _ = Get.find();
+  // final ExamController _ = Get.find();
 
   late AnimationController _animationController;
   late Animation<double> _fade1;
@@ -40,61 +42,70 @@ class _RelationshipSubScreenState extends State<RelationshipSubScreen>
   @override
   Widget build(BuildContext context) {
     _initAnimation();
-    return Container(
-      child: SingleChildScrollView(
-        child: FadeTransition(
-          opacity: _fade1,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 24,
-              ),
-              Row(
-                children: [
-                  Text(
-                    'Relationship',
-                    style: TextStyle(fontFamily: Fonts.Bold, fontSize: 16),
-                  ),
-                  Spacer(),
-                  Text(
-                    _.result.type,
-                    style: TextStyle(fontFamily: Fonts.Bold, fontSize: 22),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              SlideTransition(
-                position: _slide1,
-                child: Text(
-                  _.result.relationship,
-                  style: TextStyle(
-                      color: HexColor.fromHex('5F5F5F'), fontSize: 16),
-                ),
-              ),
-              SizedBox(
-                height: 24,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  SlideTransition(
-                    position: _slide1,
-                    child: SvgPicture.asset(
-                      Assets.RELATIONSHIP_IMG,
-                      height: Get.width / 2,
+    return BlocBuilder<ResultBloc, ResultState>(
+      builder: (context, state) {
+        return (state is ResultMainState)
+            ? Container(
+                child: SingleChildScrollView(
+                  child: FadeTransition(
+                    opacity: _fade1,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 24,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              'Relationship',
+                              style: TextStyle(
+                                  fontFamily: Fonts.Bold, fontSize: 16),
+                            ),
+                            Spacer(),
+                            Text(
+                              state.result.type,
+                              style: TextStyle(
+                                  fontFamily: Fonts.Bold, fontSize: 22),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        SlideTransition(
+                          position: _slide1,
+                          child: Text(
+                            state.result.relationship,
+                            style: TextStyle(
+                                color: HexColor.fromHex('5F5F5F'),
+                                fontSize: 16),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 24,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            SlideTransition(
+                              position: _slide1,
+                              child: SvgPicture.asset(
+                                Assets.RELATIONSHIP_IMG,
+                                height: Get.width / 2,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 24,
+                        )
+                      ],
                     ),
                   ),
-                ],
-              ),
-              SizedBox(
-                height: 24,
+                ),
               )
-            ],
-          ),
-        ),
-      ),
+            : Container();
+      },
     );
   }
 }

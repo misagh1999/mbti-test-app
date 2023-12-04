@@ -95,13 +95,13 @@ class ExamBloc extends Bloc<ExamEvent, ExamState> {
     final model = PersonalityModel.createFromCode(resultTypeStr);
 
     // todo: implement later
-    // result = PResultModel(type: model.type);
+    PResultModel result = PResultModel(type: model.type);
 
-    // await result.loadResult();
+    await result.loadResult();
 
-    _onPageCreated(state, emit);
+    // _onPageCreated(state, emit);
 
-    Get.offNamed(Routes.RESULT);
+    Get.offNamed(Routes.RESULT, arguments: result);
   }
 
   void _onSubmit(state, emit, event) async {
