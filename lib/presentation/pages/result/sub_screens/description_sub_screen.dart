@@ -16,7 +16,7 @@ class DescriptionSubScreen extends StatefulWidget {
 }
 
 class _DescriptionSubScreenState extends State<DescriptionSubScreen>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _fade1;
 

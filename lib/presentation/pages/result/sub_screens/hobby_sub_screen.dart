@@ -17,7 +17,7 @@ class HobbySubScreen extends StatefulWidget {
 }
 
 class _HobbySubScreenState extends State<HobbySubScreen>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _fade1;
 

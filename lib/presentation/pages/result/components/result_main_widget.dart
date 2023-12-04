@@ -16,7 +16,7 @@ class ResultMainWidget extends StatefulWidget {
 }
 
 class _ResultMainWidgetState extends State<ResultMainWidget>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
 
   late AnimationController _animationController;
   late Animation<double> _fade1;

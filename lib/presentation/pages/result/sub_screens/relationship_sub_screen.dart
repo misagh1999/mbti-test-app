@@ -17,7 +17,7 @@ class RelationshipSubScreen extends StatefulWidget {
 }
 
 class _RelationshipSubScreenState extends State<RelationshipSubScreen>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _fade1;
 

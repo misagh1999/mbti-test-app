@@ -17,7 +17,7 @@ class WorkSubScreen extends StatefulWidget {
 }
 
 class _WorkSubScreenState extends State<WorkSubScreen>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _fade1;
 

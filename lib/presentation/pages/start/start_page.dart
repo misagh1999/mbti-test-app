@@ -14,7 +14,7 @@ class StartPage extends StatefulWidget {
 }
 
 class _StartPageState extends State<StartPage>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
 
   late AnimationController _animationController;
   late Animation<double> _fade1;
