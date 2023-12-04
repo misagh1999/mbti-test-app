@@ -1,4 +1,3 @@
-import 'package:english_mbti_test_app/controllers/result_controller.dart';
 import 'package:english_mbti_test_app/data/models/personality_model.dart';
 import 'package:english_mbti_test_app/presentation/blocs/result/result_bloc.dart';
 import 'package:flutter/material.dart';
@@ -22,9 +21,7 @@ class ResultPage extends StatefulWidget {
   State<ResultPage> createState() => _ResultPageState();
 }
 
-class _ResultPageState extends State<ResultPage>  {
-  // final ResultController resultController = Get.put(ResultController());
-
+class _ResultPageState extends State<ResultPage> {
   late PageController _pageController;
   late ResultBloc _bloc;
 

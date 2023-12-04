@@ -94,12 +94,9 @@ class ExamBloc extends Bloc<ExamEvent, ExamState> {
 
     final model = PersonalityModel.createFromCode(resultTypeStr);
 
-    // todo: implement later
     PResultModel result = PResultModel(type: model.type);
 
     await result.loadResult();
-
-    // _onPageCreated(state, emit);
 
     Get.offNamed(Routes.RESULT, arguments: result);
   }

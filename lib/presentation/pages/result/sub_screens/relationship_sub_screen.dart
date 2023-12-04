@@ -1,4 +1,3 @@
-import 'package:english_mbti_test_app/controllers/exam_controller.dart';
 import 'package:english_mbti_test_app/presentation/blocs/result/result_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,8 +18,6 @@ class RelationshipSubScreen extends StatefulWidget {
 
 class _RelationshipSubScreenState extends State<RelationshipSubScreen>
     with SingleTickerProviderStateMixin {
-  // final ExamController _ = Get.find();
-
   late AnimationController _animationController;
   late Animation<double> _fade1;
 

@@ -1,5 +1,4 @@
 import 'package:english_mbti_test_app/constants.dart';
-import 'package:english_mbti_test_app/controllers/exam_controller.dart';
 import 'package:english_mbti_test_app/presentation/blocs/result/result_bloc.dart';
 import 'package:english_mbti_test_app/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +17,6 @@ class ResultMainWidget extends StatefulWidget {
 
 class _ResultMainWidgetState extends State<ResultMainWidget>
     with SingleTickerProviderStateMixin {
-  // final ExamController _ = Get.find();
 
   late AnimationController _animationController;
   late Animation<double> _fade1;

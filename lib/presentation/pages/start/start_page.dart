@@ -1,5 +1,4 @@
 import 'package:english_mbti_test_app/constants.dart';
-import 'package:english_mbti_test_app/controllers/exam_controller.dart';
 import 'package:english_mbti_test_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,7 +15,6 @@ class StartPage extends StatefulWidget {
 
 class _StartPageState extends State<StartPage>
     with SingleTickerProviderStateMixin {
-  final ExamController examController = Get.put(ExamController());
 
   late AnimationController _animationController;
   late Animation<double> _fade1;

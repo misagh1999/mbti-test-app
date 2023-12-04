@@ -10,8 +10,6 @@ class ResultBottomWidget extends StatelessWidget {
     super.key,
   });
 
-  // final ExamController _ = Get.find();
-  // final ResultController resultController = Get.find();
   final ResultBloc bloc;
 
   @override
@@ -28,9 +26,7 @@ class ResultBottomWidget extends StatelessWidget {
                               title: state.previousTitle,
                               color: state.result.lightColor,
                               isNext: false,
-                              press: () => bloc.add(PreviousBtnClicked())
-                              // resultController.onPreviousBtnClicked(),
-                              )
+                              press: () => bloc.add(PreviousBtnClicked()))
                           : SizedBox(),
                     ),
                     SizedBox(
@@ -42,9 +38,7 @@ class ResultBottomWidget extends StatelessWidget {
                               title: state.nextTitle,
                               color: state.result.darkColor,
                               isNext: true,
-                              press: () => bloc.add(NextBtnClicked())
-                              // resultController.onNextBtnClicked(),
-                              )
+                              press: () => bloc.add(NextBtnClicked()))
                           : SizedBox(),
                     ),
                   ],
